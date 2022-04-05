@@ -32,7 +32,7 @@ const Todo = () => {
   }, [todo]);
 
   return (
-    <div className="bg-gray-100 w-full h-screen grid place-items-center">
+    <div className="bg-gray-800 w-full h-screen grid place-items-center">
       <div className="bg-white w-72 sm:w-80 h-96 shadow-xl rounded-md">
         <h1 className="text-center my-5 text-2xl font-bold text-blue-400">
           Todo App
