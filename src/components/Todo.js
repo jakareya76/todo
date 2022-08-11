@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { MdOutlineAddCircle } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
+import { AiTwotoneDelete } from "react-icons/ai";
 import GetLocalStorage from "./GetLocalStorage";
 
 const Todo = () => {
@@ -32,38 +31,44 @@ const Todo = () => {
   }, [todo]);
 
   return (
-    <div className="bg-gray-800 w-full h-screen grid place-items-center">
-      <div className="bg-white w-72 sm:w-80 h-96 shadow-xl rounded-md">
-        <h1 className="text-center my-5 text-2xl font-bold text-blue-400">
+    <div className="h-screen w-screen bg-zinc-900 flex items-center justify-center">
+      <div className="w-[350px] h-[450px] bg-zinc-800 rounded-sm">
+        <h1 className="text-center py-5 text-3xl font-bold text-zinc-300 underline font-mono">
           Todo App
         </h1>
-
-        <div className="flex items-center justify-center">
+        <div className="w-full flex items-center justify-center">
           <input
-            className="border-b-2 outline-none sm:py-2 sm:px-4 mr-1"
             type="text"
-            placeholder="Enter A Item"
+            placeholder="Enter A Todo"
             value={input}
             onChange={(e) => setInput(e.target.value)}
+            className="p-2 w-[70%] bg-transparent border-b-2 border-zinc-300 text-zinc-300 outline-none font-mono placeholder:text-zinc-300"
           />
-          <button className="text-4xl" onClick={addTodo}>
-            <MdOutlineAddCircle className="text-blue-500 hover:text-green-600" />
+          <button
+            onClick={addTodo}
+            className="bg-zinc-700 text-zinc-300 pt-1 pb-[10px] px-4 mx-2 text-3xl font-bold rounded-sm"
+          >
+            +
           </button>
         </div>
-
-        <ol className="flex flex-col ml-8 mt-2">
-          {todo.map((curElem, index) => {
-            return (
-              <div className="flex items-center mt-2" key={index}>
-                <MdDelete
-                  className="text-2xl cursor-pointer hover:text-red-500"
-                  onClick={() => deleteTodo(index)}
-                />
-                <li className="text-lg font-semibold">{curElem}</li>
-              </div>
-            );
-          })}
-        </ol>
+        <div className="w-full p-5">
+          <ul className="flex flex-col">
+            {todo.map((curElem, idx) => {
+              return (
+                <div className="flex items-center" key={idx}>
+                  <AiTwotoneDelete
+                    size={20}
+                    className="text-zinc-500 mx-1 cursor-pointer hover:text-red-500"
+                    onClick={() => deleteTodo(idx)}
+                  />
+                  <li className="text-zinc-300 font-mono font-semibold my-1">
+                    {curElem}
+                  </li>
+                </div>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </div>
   );
